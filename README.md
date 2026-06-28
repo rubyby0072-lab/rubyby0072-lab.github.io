@@ -40,6 +40,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, 
 .detail-row { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; }
 .detail-icon { color: #aaa; flex-shrink: 0; margin-top: 1px; font-size: 15px; }
 .detail-text { color: #555; line-height: 1.5; }
+.detail-text a { color: #1a56db; text-decoration: none; font-weight: 500; }
+.detail-text a:hover { text-decoration: underline; }
 .detail-label { color: #aaa; font-size: 11px; margin-right: 4px; display: inline; }
 
 .footer { padding: 1rem; border-top: 1px solid #e8e6e0; position: sticky; bottom: 0; background: #fff; }
@@ -104,6 +106,7 @@ const restaurants = [
     reviews: 1160,
     price: '$$ 中等',
     address: '大安區延吉街233巷3號',
+    url: 'https://maps.app.goo.gl/9R6wYshj3mB7fA5s8',
     hours: '11:30–14:30 / 17:30–21:30（每日）',
     parking: '鄰近路邊停車，無專屬停車場',
     menu: '香乾牛肉絲、清炒高麗菜、海鮮豆腐、炸子雞',
@@ -118,6 +121,7 @@ const restaurants = [
     reviews: 1255,
     price: '$$$ 中高',
     address: '中山區長春路26號',
+    url: 'https://maps.app.goo.gl/r6R6xGAsZasAgh2A7',
     hours: '11:30–14:00 / 17:30–21:00（每日）',
     parking: '建議大眾運輸，鄰近捷運',
     menu: '烤鴨三吃、新鮮海鮮、木須鴨、鴨架湯',
@@ -132,6 +136,7 @@ const restaurants = [
     reviews: 4547,
     price: '$$ 中等',
     address: '中山區復興北路86號2F',
+    url: 'https://maps.app.goo.gl/nNfJ2H9F9SjHHev38',
     hours: '11:00–14:00 / 17:00–21:00（每日）',
     parking: '鄰近復興北路，路邊停車',
     menu: '北京烤鴨、蔥油餅、臭豆腐、炒水芹、蘿蔔絲酥餅',
@@ -146,6 +151,7 @@ const restaurants = [
     reviews: 136,
     price: '$ 平實',
     address: '松山區光復北路7號1樓',
+    url: 'https://maps.app.goo.gl/D2L1xXy4GszW7fX18',
     hours: '11:30–14:00 / 17:00–21:00（週二公休）',
     parking: '附近有路邊停車格',
     menu: '煙燻鵝肉、芋頭米粉湯、豬肝、炸臭豆腐卷、炸蝦',
@@ -160,6 +166,7 @@ const restaurants = [
     reviews: 205,
     price: '$$$ 中高',
     address: '信義區松仁路99號B1',
+    url: 'https://maps.app.goo.gl/wY7z7KzX9SzHHeA68',
     hours: '11:30–22:00（每日）',
     parking: '宏泰廣場二館停車場，消費折抵2小時',
     menu: '北京烤鴨、港式飲茶、蜜汁叉燒、糖醋排骨',
@@ -222,7 +229,10 @@ function renderCards() {
       <div class="card-details" id="details-${r.id}">
         <div class="detail-row">
           <span class="detail-icon">📍</span>
-          <div class="detail-text"><span class="detail-label">地址</span>${r.address}</div>
+          <div class="detail-text">
+            <span class="detail-label">地址</span>
+            <a href="${r.url}" target="_blank" onclick="event.stopPropagation();">${r.address} ↗</a>
+          </div>
         </div>
         <div class="detail-row">
           <span class="detail-icon">🕐</span>
